@@ -164,11 +164,32 @@ print(m1,'chart')
 
 **Your Answers here:**
 <br>
+1. 6 explain have a Cumulative Proportion Explained of 52%
 <br>
+2. 0.93
 <br>
+3. Interpretation is that the bonds, currencies, stock indices/aggregators (#3 and 4), and interest rates are the principal determinants of tradable securities. Don't know what to call them.
 <br>
+4.<br>
+pre_crisis_data<br>
+```{r echo=FALSE, comment=NA, warning=FALSE, error=FALSE,message=FALSE,results='asis'}
+pre_crisis_data = futures_data[as.Date(rownames(futures_data)) > "2002-11-01" & as.Date(rownames(futures_data)) < "2007-10-01", ]
+```
 
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig.height=5,fig.width= 8, fig=TRUE}
+pnl_plot(pre_crisis_data)
+```
+<br>
+crisis_data<br>
+```{r echo=FALSE, comment=NA, warning=FALSE, error=FALSE,message=FALSE,results='asis'}
+crisis_data = futures_data[as.Date(rownames(futures_data)) > "2007-10-01" & as.Date(rownames(futures_data)) < "2009-03-01", ]
+```
 
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig.height=5,fig.width= 8, fig=TRUE}
+pnl_plot(crisis_data)
+```
+<br>
+5. There is high correlation with the market both in "bull periods" as well as "bear periods"
 <hr>
 
 ### A Simple Futures Trend Following Strategy
@@ -248,7 +269,9 @@ How does this compare with **existing CTA products** such as [this one from Soci
 
 **Your Answers here:**
 <br>
+1. Invest 1$/day each 20 days, repetitively
 <br>
+2. Will get different growth trends as one changes the frequency (increasing or reducing from 20). Doesn't seem to get better easily (neither with 10 nor 30)
 <br>
 <br>
 
@@ -262,6 +285,8 @@ Now you have seen how to develop some trading strategies that hedge funds have b
 Here is for example something that can be achieved relatively easily...
 <br>
 
+Here is how this strategy has performed during this period. 
+<br>
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig.height=5,fig.width= 8, fig=TRUE}
 load("data/sample_strategy.Rdata")
 pnl_plot(sample_strategy)
@@ -269,8 +294,6 @@ pnl_plot(sample_strategy)
 
 <br>
 
-Here is how this strategy has performed during this period. 
-<br>
 <br>
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE, results='asis'}
