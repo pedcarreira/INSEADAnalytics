@@ -3,6 +3,7 @@
 title: "Exercise Set 1"
 author: "T. Evgeniou"
 output: html_document
+runtime: shiny
 ---
 
 
@@ -58,9 +59,10 @@ For more information on downloading finance data from the internet as well as on
 1. Can you find some interesting finance related R package or github repository? 
 **Your Answers here:**
 <br>
+ -> maRketSim (bond market simulator)
 <br>
+ -> twm (tweet miner, Comparing  stock market charts with frequent sets of keywords in Twitter microblogs messages http://bpavlyshenko.blogspot.fr/2013/05/tweets-miner-for-stock-markets.html)
 
-<hr>
 <hr>
 
 ### Part I: Statistics of S&P Daily Returns
@@ -86,10 +88,16 @@ pnl_plot(SPY)
 
 **Your Answers here:**
 <br>
+1. In file dataSet1.R, lines 24 to 33 (get the data into tmpdata, match with existing dates of matrix StockPrices and then save into StockPrices and StockVolume matrices)
 <br>
+2.The cumulative returns of Apple during this period is `r round(100*sum(StockReturns[1:2770,2]),1)`%.<br>
+The average daily returns during this period is `r round(100*mean(StockReturns[1:2770,2]),3)`%;<br>
+The standard deviation of the daily returns during this period is `r round(100*sd(StockReturns[1:2770,2]),3)`%;
 <br>
-<br>
-
+3. Just add another ticker to mytickers and add the code to display this data in this report <br>
+The cumulative returns of Yahoo! during this period is `r round(100*sum(StockReturns[1:2770,3]),1)`%.<br>
+The average daily returns during this period is `r round(100*mean(StockReturns[1:2770,3]),3)`%;<br>
+The standard deviation of the daily returns during this period is `r round(100*sd(StockReturns[1:2770,3]),3)`%;<br>
 <hr>
 <hr>
 
@@ -127,10 +135,19 @@ We can also transpose the matrix of returns to create a new "horizontal" matrix.
 
 **Your Answers here:**
 <br>
+1. nrow(transposedData) =`r nrow(t(StockReturns))` and ncol(transposedData) =`r ncol(t(StockReturns))`
 <br>
+2. 
 <br>
-<br>
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig=TRUE}
+portfolio = apply(StockReturns[,1:2],1,mean)
+names(portfolio) <- rownames(StockReturns)
+pnl_plot(portfolio)
+```
 
+<br>
+<br>
+<br>
 <hr>
 <hr>
 
@@ -145,8 +162,28 @@ This is an important step and will get you to think about the overall process on
 
 **Your Answers here:**
 <br>
+1. Change "startDate" in line 11 of dataSet1.R from "2005-01-01" to "2001-01-01" and then Re-Source code
 <br>
-<br>
+
+
+2. We can do it for S&P, Apple, Yahoo! and Goldman Sachs together (including plot):<br>
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig=TRUE}
+cum_returns<-0
+avg_returns<-0
+std_returns<-0
+for (ticker_index in 1:length(mytickers))
+  cum_returns<-cum_returns+round(100*sum(StockReturns[1:2770,ticker_index]),1)/length(mytickers)
+  avg_returns<-avg_returns+round(100*mean(StockReturns[1:2770,ticker_index]),3)/length(mytickers)
+  std_returns<-std_returns+round(100*sd(StockReturns[1:2770,ticker_index]),3)/length(mytickers)
+```
+The cumulative returns of the portfolio during this period is `r cum_returns`%.<br>
+The average daily returns during this period is `r avg_returns`%;<br>
+The standard deviation of the daily returns during this period is `r std_returns`%;<br>
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig=TRUE}
+portfolio = apply(StockReturns,1,mean)
+names(portfolio) <- rownames(StockReturns)
+pnl_plot(portfolio)
+```
 <br>
 
 <hr>
@@ -179,10 +216,9 @@ myData + StockReturns[1:40,])
 
 **Your Answers here:**
 <br>
+1. It compares each entry from myData to StockReturns[1:20,]. When it is different it returns "TRUE" = 1, return 60 different values. That happens because  we didn't specify the format into which we were saving the data from twentydays.csv, and by default Rstudio used data.frame of characters and built a dataframe of 20x3 (the rownames were assumed as value column). However, when we correct the format (using as.matrix(myData) and we assignrownames correctly (rownames(myData)<-myData[1:20,1] and myData<-myData[1:20,2:3]) the result changes to 0 (identical matrices).<br>
 <br>
-<br>
-<br>
-
+2. Given that both matrices have different sizes Rstudio returns an error (Error in myData + StockReturns[1:40, ] : non-conformable arrays).
 <hr>
 <hr>
 
@@ -191,12 +227,18 @@ myData + StockReturns[1:40,])
 Can you now load another dataset from some CSV file and report some basic statistics about that data? 
 
 <br>
+Answer:
+Using a dataset from the Stanford Coursera couse (weather data) one can use summary() to quick get a grasp of the data:
+```{r, eval=TRUE, echo = TRUE}
+weather_data=read.csv(file='C:/Users/pedrocarreira/OneDrive/Documents/20. P3-BDA/BDACaseStudyGA/data/hw1_data.csv', header = TRUE, sep = ",")
+summary(weather_data)
+```
 
 ### Creating Interactive Documents
 
 Finally, just for fun, one can add some interactivity in the report using [Shiny](http://rmarkdown.rstudio.com/authoring_shiny.html).All one needs to do is set the eval flag of the code chunk below (see the .Rmd file) to "TRUE", add the line "runtime: shiny" at the very begining of the .Rmd file, make the markdown output to be "html_document", and then press "Run Document". 
 
-```{r, eval=FALSE, echo = TRUE}
+```{r, eval=TRUE, echo = TRUE}
 sliderInput("startdate", "Starting Date:", min = 1, max = length(portfolio), 
             value = 1)
 sliderInput("enddate", "End Date:", min = 1, max = length(portfolio), 
