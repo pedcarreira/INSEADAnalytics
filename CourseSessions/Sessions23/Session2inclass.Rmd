@@ -74,7 +74,9 @@ print(m1,'chart')
 
 ##### Answers:
 <br>
+1. Yes, there are many. A couple of examples are 1) buying a boat being a reward for hard work/gives a sense of achievement and 2) the brand says a lot about me/I see the boat as a status symbol
 <br>
+2. They imply that respondents that answer positive to both most likely are part of a certain segment of customers.
 <br>
 <br>
 
@@ -142,9 +144,11 @@ print(Line, 'chart')
 
 **Your Answers here:**
 <br>
+1. Both of them show the highest eigen values, whilst the table additionally shows the percentage of explained variance. Basically the table helps to access how much of the variable is explained by how many factors and the chart helps to visualize how strongly each eigenvalue influences the results versus the others.
 <br>
+2. Given that the eigenvalues are ordered from the most relevant to the least, most likely one could not have an increasing line.
 <br>
-<br>
+3. We would prefer to see which questions and main values behing it each type of customer shows. That can be seen in the next steps where questions under the same component are grouped, because that would allow us to effectively see the customer segments.
 
 #### Visualization and Interpretation
 
@@ -215,10 +219,26 @@ print(m1,'chart')
 
 **Your Answers here:**
 <br>
+1. The first factors make perfect business sense, and have behind them:<br>
+1) customers who value the brand value/status, <br>
+2) customers who value the feeling of freedom, adventure and socialization that havign a boat allows, <br>
+3) customers who value the high quality and technology of the boat, <br>
+4) customer who do maintenance and tend to be knowledgeable about boats, <br>
+5) customers who tend to value functionality, buy no frills boats and are price sensitive
 <br>
+2. I would choose 5 due to: <br>
+1) representing more than 50% of the variation between customers and follows the 'rule of thumb' of considering only the factors up to the “elbow” of the scree plot, <br>
+2) there is residual overlap between the principal components in diffenrent survey questions, <br>
+3) the customer segments that result make business sense.
 <br>
-<br>
-
+3. They show the following segments:<br>
+1) customers that value premium brand/status symbol,<br>
+2) customers valuing freedom/adventure brand association,<br>
+3) customers valuing good building quality,<br>
+4) customers that tend to be boat savvy and do changes/maintenance<br>
+5) price-sensitive customers and value functionality<br>
+4. Always do critical analysis of the results based in statistical value, interpretation and business sense<br>
+5. Saved in a separate report
 <hr>
 <hr>
 
@@ -413,9 +433,23 @@ print(m1,'chart')
 
 **Your Answers here:**
 <br>
+1. There could be between 3 or 4 clear segments in the market, depending on how granular one wants to be in segmenting the market.Statistically one can see in teh dendogram that there is a significant height separating the option for 3 clusters from adjacent (4 and 5 clusters  options) and the same for 4 clusters. In terms of interpretation of the data there is less overlap in terms of ratios versus the overall population. Finally, both options make business sense.
+
+
 <br>
+2. I tend to see 4 segments in the market:<br>
+1) Single, separated or living with partner casual sailer/boat hobbyist that enjoys the boat lifestyle, tend to do it alone as a hobby<br>
+2) Older, relatively brand sensitive customer that see boat as an escape from married life or a way to spend time because he is now widowed/divorced<br>
+3) Status/premium brand customer, likes to state that boating is his passion, shows himself as strong boat afficionado and advocates for the brand of his choice<br>
+4) Price sensitive customer valuing functionality and own maintenance<br>
+Having 3 segments would mean merging the two last segments which explain less the variability of the data than the first two but have probability the most distinct profiles of boat owners.
+
 <br>
+3. Considering reiterating the whole analysis one can also see that 3 or 4 segments would make sense from all perspectives.
 <br>
+4. Answered already in both the 1st set of questions and in this last one.<br>
+Part I: 1. 4-5 factors; 2. associate through the load factors that link questions to the factors;3. She should see it as detailed in the last question of the 1st set of questions<br>
+Part II: 1. Hierarchical clustering and k-means were performed; 2. 4 clusters, good trade-off between statistical value, interpretation of data and business sense; 3. See segments' describe in Q.2 above, it will allow to CreeqBoat to choose which segments to pursue, depending on segment size, spending per customer, quality of boat manufacturing, customer service/repair frequence, etc.
 
 <hr>
 

@@ -11,7 +11,7 @@ get_libraries <- function(filenames_list) {
 
 libraries_used=c("devtools","knitr","graphics","grDevices","xtable","pryr",
                  "Hmisc","vegan","fpc","GPArotation","FactoMineR","cluster",
-                 "psych","stringr","googleVis", "png","ggplot2","googleVis", "gridExtra")
+                 "psych","stringr","googleVis", "png","ggplot2","googleVis", "gridExtra", "pryr")
 get_libraries(libraries_used)
 
 if (require(slidifyLibraries) == FALSE) 
